@@ -51,8 +51,7 @@ def test_employees_in_salary_range(spark):
     rows = _run_cell(spark, "employees_in_salary_range").collect()
     salaries = [row.salary for row in rows]
     # rows is a list of Row objects; salaries is a list of Decimal values
-    # TODO: assert the correct number of employees are returned, all salaries are between 50000 and 100000,
-    # and results are in ascending salary order
+    # TODO: assert the correct number of employees are returned and all salaries are between 50000 and 100000
 
 
 def test_recent_hires(spark):
@@ -67,8 +66,8 @@ def test_average_salary_by_department(spark):
     rows = _run_cell(spark, "average_salary_by_department").collect()
     dept_avgs = {row.department: row.avg_salary for row in rows}
     # dept_avgs is a dict mapping string (department name) to Decimal (average salary)
-    # TODO: assert the correct number of departments are returned, check specific avg_salary values
-    # (hint: Engineering avg = 102500, Sales avg = 70000), and verify results are ordered descending by avg_salary
+    # TODO: assert the correct number of departments are returned and check specific avg_salary values
+    # (hint: Engineering avg = 102500, Sales avg = 70000)
 
 
 # ---------------------------------------------------------------------------
@@ -82,21 +81,6 @@ def test_email_filter_returns_expected_columns(spark):
     # TODO: assert that all expected columns are present:
     # employee_id, name, email, department, salary, hire_date
 
-
-def test_salary_range_filter_ordering(spark):
-    """Verify that salary range query results are ordered by salary."""
-    rows = _run_cell(spark, "employees_in_salary_range").collect()
-    salaries = [row.salary for row in rows]
-    # salaries is a list of Decimal values
-    # TODO: assert that each salary is <= the next one (ascending order)
-
-
-def test_recent_hires_sorting(spark):
-    """Verify that recent hires are sorted by hire date descending."""
-    rows = _run_cell(spark, "recent_hires").collect()
-    hire_dates = [row.hire_date for row in rows]
-    # hire_dates is a list of Python date objects
-    # TODO: if more than one row is returned, assert hire_dates are in descending order
 
 
 # ===========================================================================
