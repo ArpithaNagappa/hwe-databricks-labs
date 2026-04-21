@@ -43,7 +43,7 @@ def test_recent_hires(spark):
     _run_cell(spark, "recent_hires")
     rows = spark.sql("SELECT * FROM week3_testing.filtered_employees").collect()
     # TODO: assert len(rows) equals 1 and rows[0].employee_id equals 'EMP-006'
-    assert len(rows) == 0 and rows[0].employee_id == 'EMP-006'
+    assert len(rows) == 1 and rows[0].employee_id == 'EMP-006'
 
 def test_engineering_department_filter(spark):
     """Verify that only Engineering employees are inserted."""
