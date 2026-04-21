@@ -19,9 +19,8 @@ def test_valid_email_filter(spark):
     """Assert that only employees with a valid email are inserted into filtered_employees."""
     _run_cell(spark, "demo_valid_email_filter")
     rows = spark.sql("SELECT * FROM week3_testing.filtered_employees").collect()
-    # TODO: assert len(rows) equals the number of employees whose email contains '@'
     assert len(rows) == 3
-    # just a modified comment 
+
 def test_insert_engineering_filter(spark):
     """Assert that only Engineering employees are inserted into filtered_employees."""
     _run_cell(spark, "demo_insert_engineering_filter")
